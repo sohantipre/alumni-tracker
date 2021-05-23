@@ -12,6 +12,17 @@ const alumnimodel = mongoose.Schema({
   collegename: {
     type: String,
   },
+  extrainfo: {
+    company: {
+      type: String,
+    },
+    age: {
+      type: String,
+    },
+    post: {
+      type: String,
+    },
+  },
 });
 
 const Alumni = mongoose.model("Alumni", alumnimodel);

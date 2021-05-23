@@ -1,25 +1,7 @@
 import asynchandler from "express-async-handler";
 
 import Student from "../models/studentmodel.js";
-
-// export const loginuser = asynchandler(async (req, res) => {
-//     const { email, password } = req.body;
-
-//     const user = await User.findOne({ email });
-//     if (user && (await user.matchpassword(password))) {
-//       res.json({
-//         id: user._id,
-//         name: user.name,
-//         email: user.email,
-//         password: user.password,
-//         isAdmin: user.isAdmin,
-//         token: user.token ? user.token : generateauth(user._id),
-//       });
-//     } else {
-//       res.status(401);
-//       throw new Error("Invalid email or password");
-//     }
-//   });
+import generateauth from "../utils/generateauth.js";
 
 export const loginstudent = asynchandler(async (req, res) => {
   const { email, password } = req.body;
@@ -31,6 +13,7 @@ export const loginstudent = asynchandler(async (req, res) => {
       name: student.name,
       email: student.email,
       password: student.password,
+      token: generateauth(student._id),
     });
   } else {
     res.status(400);
@@ -39,15 +22,16 @@ export const loginstudent = asynchandler(async (req, res) => {
 });
 
 export const registerstudent = asynchandler(async (req, res) => {
-  const { email, password, name } = req.body;
+  const { email, password, name, collegename } = req.body;
 
-  const student = await Student.create({ email, password, name });
+  const student = await Student.create({ email, password, name, collegename });
   if (student) {
     res.json({
       id: student._id,
       name: student.name,
       email: student.email,
       password: student.password,
+      token: generateauth(student._id),
     });
   } else {
     res.status(400);

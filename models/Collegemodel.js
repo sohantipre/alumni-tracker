@@ -1,4 +1,13 @@
 import mongoose from "mongoose";
+const alumnischema = mongoose.Schema({
+  name: {
+    type: String,
+  },
+  id: {
+    type: String,
+  },
+});
+
 const collegemodel = mongoose.Schema({
   name: {
     type: String,
@@ -9,18 +18,9 @@ const collegemodel = mongoose.Schema({
   password: {
     type: String,
   },
-  students: [
-    {
-      name: {
-        type: String,
-      },
-      id: {
-        type: String,
-      },
-    },
-  ],
+  alumnis: [alumnischema],
 });
 
-const college = mongoose.model("College", collegemodel);
+const College = mongoose.model("College", collegemodel);
 
-export default college;
+export default College;

@@ -1,5 +1,5 @@
 import asynchandler from "express-async-handler";
-
+import generateauth from "../utils/generateauth.js";
 import College from "../models/Collegemodel.js";
 
 export const logincollege = asynchandler(async (req, res) => {
@@ -12,6 +12,7 @@ export const logincollege = asynchandler(async (req, res) => {
       name: college.name,
       email: college.email,
       password: college.password,
+      token: generateauth(college._id),
     });
   } else {
     res.status(400);
@@ -29,6 +30,19 @@ export const registercollege = asynchandler(async (req, res) => {
       name: college.name,
       email: college.email,
       password: college.password,
+      token: generateauth(college._id),
+    });
+  } else {
+    res.status(400);
+    throw new Error("invalid credentials");
+  }
+});
+
+export const getalumnis = asynchandler(async (req, res) => {
+  const college = await College.findById(req.college._id);
+  if (college) {
+    res.json({
+      alumnis: college.alumnis,
     });
   } else {
     res.status(400);
