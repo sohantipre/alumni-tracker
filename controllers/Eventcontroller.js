@@ -39,3 +39,19 @@ export const geteventbycollege = asynchandler(async (req, res) => {
     });
   }
 });
+
+export const getfollowedalumnis = asynchandler(async (req, res) => {
+  const id = req.params.id;
+  const alumnis = await Alumni.find({});
+
+  let al = [];
+  alumnis.map((a) => {
+    if (a.followinglist.includes(id)) {
+      al.push(a._id);
+    }
+  });
+
+  al.map();
+
+  res.json({ alumnis: al });
+});

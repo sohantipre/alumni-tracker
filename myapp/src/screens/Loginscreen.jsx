@@ -20,7 +20,7 @@ const LoginPage = (props) => {
   const options=[
       'college','student','alumni'
   ]
-
+  localStorage.setItem('field',JSON.stringify(''))
     const handlechange = (e) => {
         const queryname=e.target.name
         const value=e.target.value
@@ -46,6 +46,8 @@ const LoginPage = (props) => {
                 localStorage.setItem('token',JSON.stringify(value.data.token))
                 localStorage.setItem('id',JSON.stringify(value.data.id))
                 localStorage.setItem('name',JSON.stringify(value.data.name))
+                localStorage.setItem('collegename',JSON.stringify(value.data.name))
+                localStorage.setItem('field',JSON.stringify('college'))
 console.log('college logged in')
 props.history.push('/collegescreen');
 
@@ -56,6 +58,8 @@ props.history.push('/collegescreen');
                 localStorage.setItem('token',JSON.stringify(value.data.token))
                 localStorage.setItem('id',JSON.stringify(value.data.id))
                 localStorage.setItem('name',JSON.stringify(value.data.name))
+                localStorage.setItem('collegename',JSON.stringify(value.data.collegename))
+                localStorage.setItem('field',JSON.stringify('student'))
 console.log('student logged in')
 props.history.push('/studentscreen');
             })
@@ -65,6 +69,8 @@ props.history.push('/studentscreen');
                 localStorage.setItem('token',JSON.stringify(value.data.token))
                 localStorage.setItem('id',JSON.stringify(value.data.id))
                 localStorage.setItem('name',JSON.stringify(value.data.name))
+                localStorage.setItem('collegename',JSON.stringify(value.data.collegename))
+                localStorage.setItem('field',JSON.stringify('alumni'))
 console.log('alumni logged in')
 props.history.push('/alumniscreen');
             })

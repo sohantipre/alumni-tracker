@@ -38,6 +38,19 @@ export const registercollege = asynchandler(async (req, res) => {
   }
 });
 
+export const getcollegebyid = asynchandler(async (req, res) => {
+  const college = await College.findById(req.params.id);
+  if (college) {
+    res.json({
+      name: college.name,
+      email: college.email,
+      alumnis: college.alumnis,
+    });
+  } else {
+    throw new Error("No such college found!!");
+  }
+});
+
 export const getalumnis = asynchandler(async (req, res) => {
   const college = await College.findById(req.college._id);
   if (college) {

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../App.css";
+import Navbar from "../components/navbar";
 
 const Alumniscreen = (props) => {
   const id = JSON.parse(localStorage.getItem("id"));
@@ -47,14 +48,7 @@ const Alumniscreen = (props) => {
 
   return (
     <>
-      <button
-        onClick={() => {
-          props.history.push(`/profile/${id}`);
-        }}
-        style={{ width: "100vw", height: "50px" }}
-      >
-        My Profile
-      </button>
+      <Navbar></Navbar>
       <div className='eventform'>
         <h1>Schedule new event</h1>
         <form className='event__form__box' onSubmit={handlecreate}>

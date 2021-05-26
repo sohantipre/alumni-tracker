@@ -18,7 +18,7 @@ const Alleventscreen = (props) => {
   return loading ? (
     <h3>loading...</h3>
   ) : (
-    <div>
+    <div style={{ marginTop: "20px" }}>
       {events.length === 0 ? (
         <h3>there are no events yet</h3>
       ) : (

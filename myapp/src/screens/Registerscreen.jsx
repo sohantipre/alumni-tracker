@@ -17,12 +17,12 @@ const RegisterPage = () => {
         error: '',
         name:'',
         collegename:'',
-        fieldname:''
+        fieldname:'college'
 
     });
     const [fieldname,setfieldname]=useState('')
     const [collegename,setcollegenamestate]=useState(false)
-
+    localStorage.setItem('field',JSON.stringify(''))
     const options=[
         'college','student','alumni'
     ]

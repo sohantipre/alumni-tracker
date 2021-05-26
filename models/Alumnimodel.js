@@ -12,6 +12,20 @@ const alumnimodel = mongoose.Schema({
   collegename: {
     type: String,
   },
+  followinglist: [
+    {
+      id: {
+        type: String,
+      },
+    },
+  ],
+  followerlist: [
+    {
+      id: {
+        type: String,
+      },
+    },
+  ],
   extrainfo: {
     company: {
       type: String,

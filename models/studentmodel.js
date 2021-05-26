@@ -6,6 +6,20 @@ const studentmodel = mongoose.Schema({
   email: {
     type: String,
   },
+  followinglist: [
+    {
+      id: {
+        type: String,
+      },
+    },
+  ],
+  followerlist: [
+    {
+      id: {
+        type: String,
+      },
+    },
+  ],
   password: {
     type: String,
   },
